@@ -117,6 +117,8 @@ class IRCBot(IRCClient):
             except queue.Empty as e: pass
             except Exception as e:
                 logging.debug(e.args)
+                self.stop()
+                sys.exit(1)
 
     def start(self):
         IRCClient.start(self)
